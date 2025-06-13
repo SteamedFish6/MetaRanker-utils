@@ -3,6 +3,7 @@ Database/final/*
 Database/temp/corrected/*
 Database/temp/fasta/*
 Database/temp/output_M8/*
+PlottingScripts/*.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
