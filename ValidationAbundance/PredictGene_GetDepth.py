@@ -24,7 +24,7 @@ from Bio import SeqIO
 
 THREADS = 32
 
-Project_path = "/home/gzy/SRAdata/ValidateBatch3_20250609" #20250609
+Project_path = "AbundValidation" #need to change
 
 Reads_folder = "ReadsFile"
 Assembly_folder = "Assembly" #Not full

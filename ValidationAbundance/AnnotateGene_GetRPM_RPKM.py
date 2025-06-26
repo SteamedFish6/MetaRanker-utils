@@ -21,9 +21,9 @@ from Bio import SeqIO
 
 
 # input and output path
-Sample_Gene_Path = "/home/gzy/SRAdata/ValidateBatch3_20250609/GenePredict/GeneFasta"
-Sample_Depth_Path = "/home/gzy/SRAdata/ValidateBatch3_20250609/GenePredict/GeneDepth"
-Out_Path = "/home/gzy/SRAdata/ValidateBatch3_20250609/GenePredict"
+Sample_Gene_Path = "AbundValidation/GenePredict/GeneFasta"
+Sample_Depth_Path = "AbundValidation/GenePredict/GeneDepth"
+Out_Path = "AbundValidation/GenePredict"
 
 def collectFile(path: str, isfolder=False, ftype='', fullpath=False) -> list:
     file_list = os.listdir(path)
@@ -62,7 +62,7 @@ PERC_IDENTITY = 80 #not used in blastp
 is_Cover_Old_File = False
 
 # database config, when use_inner_refgene == False, use refgene_abund_list_dict_nucl & refgene_abund_list_dict_prot instead
-Db_Path = "/home/gzy/code_gzy/code_20250218/ranker_db/db_fasta"
+Db_Path = "ranker_db/db_fasta"
 Db_List = ["CARD", "MGE", "VFDB"]
 Colinear_Min_NonCross_Len = 75
 
@@ -70,11 +70,11 @@ Colinear_Min_NonCross_Len = 75
 Filter_Criteria = 'identity>=85 & cover_len>=75'
 
 # backpasted source files, which corresponding to query_file_list
-Seqname_Lendict_Fname = "/home/gzy/code_gzy/code_20250218/ranker_db/ranker_blastdb_seqname_length.tsv"
+Seqname_Lendict_Fname = "ranker_db/ranker_blastdb_seqname_length.tsv"
 
 Category_Fname_Dict = {
-                       "CARD": "/home/gzy/code_gzy/code_20250218/ranker_db/aro_index.tsv",
-                       "VFDB": "/home/gzy/code_gzy/code_20250218/ranker_db/VFs.tsv",
+                       "CARD": "ranker_db/aro_index.tsv",
+                       "VFDB": "ranker_db/VFs.tsv",
                        }
 is_Category_Sepline = True
 
