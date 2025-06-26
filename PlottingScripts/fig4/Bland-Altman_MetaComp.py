@@ -59,20 +59,20 @@ plt.axhline(diff_mean, color=mid_color, linestyle='--', zorder=5, lw=1)
 plt.axhline(diff_sd1, color='grey', zorder=5, lw=1)
 plt.axhline(diff_sd2, color='grey', zorder=5, lw=1)
 
-for i in range(len(diff)):
-    if diff[i] > diff_sd1 or diff[i] < diff_sd2:
-        print(labels[i])
-        # plt.text(mean[i]-61.5, diff[i]-1.85, labels[i], fontsize=8, zorder=7, color='grey')
-        plt.text(mean[i]-67, diff[i]-1.65, labels[i], fontsize=8, zorder=7, color='grey')
+# for i in range(len(diff)):
+#     if diff[i] > diff_sd1 or diff[i] < diff_sd2:
+#         print(labels[i])
+#         # plt.text(mean[i]-61.5, diff[i]-1.85, labels[i], fontsize=8, zorder=7, color='grey')
+#         plt.text(mean[i]-67, diff[i]-1.65, labels[i], fontsize=8, zorder=7, color='grey')
 
 xmin, xmax, ymin, ymax = plt.axis()
-# plt.text(xmin+(xmax-xmin)*0.825, diff_mean+(ymax-ymin)*0.01, 'Mean ({:.2f})'.format(diff_mean), fontsize=14, zorder=8, color=mid_color)
-# plt.text(xmin+(xmax-xmin)*0.76, diff_sd1+(ymax-ymin)*-0.05, '+1.96SD ({:.2f})'.format(diff_sd1), fontsize=14, zorder=8, color='grey')
-# plt.text(xmin+(xmax-xmin)*0.761, diff_sd2+(ymax-ymin)*0.01, '-1.96SD ({:.2f})'.format(diff_sd2), fontsize=14, zorder=8, color='grey')
+plt.text(xmin+(xmax-xmin)*0.835, diff_mean+(ymax-ymin)*0.01, 'Mean ({:.2f})'.format(diff_mean), fontsize=14, zorder=8, color=mid_color)
+plt.text(xmin+(xmax-xmin)*0.76, diff_sd1+(ymax-ymin)*0.01, '+1.96SD ({:.2f})'.format(diff_sd1), fontsize=14, zorder=8, color='grey') #*0.69, *-0.05
+plt.text(xmin+(xmax-xmin)*0.761, diff_sd2+(ymax-ymin)*0.01, '-1.96SD ({:.2f})'.format(diff_sd2), fontsize=14, zorder=8, color='grey') #*0.69
 
-plt.text(xmin+(xmax-xmin)*0.838, diff_mean+(ymax-ymin)*0.01, 'Mean (0.00)', fontsize=14, zorder=8, color=mid_color)
-plt.text(xmin+(xmax-xmin)*0.78, diff_sd1+(ymax-ymin)*0.01, '+1.96SD ({:.2f})'.format(diff_sd1), fontsize=14, zorder=8, color='grey')
-plt.text(xmin+(xmax-xmin)*0.781, diff_sd2+(ymax-ymin)*0.01, '-1.96SD ({:.2f})'.format(diff_sd2), fontsize=14, zorder=8, color='grey')
+# plt.text(xmin+(xmax-xmin)*0.838, diff_mean+(ymax-ymin)*0.01, 'Mean (0.00)', fontsize=14, zorder=8, color=mid_color)
+# plt.text(xmin+(xmax-xmin)*0.76, diff_sd1+(ymax-ymin)*0.01, '+1.96SD ({:.2f})'.format(diff_sd1), fontsize=14, zorder=8, color='grey') #*0.69, *-0.05
+# plt.text(xmin+(xmax-xmin)*0.761, diff_sd2+(ymax-ymin)*0.01, '-1.96SD ({:.2f})'.format(diff_sd2), fontsize=14, zorder=8, color='grey') #*0.69
 
 plt.text(xmin+(xmax-xmin)*0.03, ymin+(ymax-ymin)*0.81, 'ICC(3, 1) = {:.4f}\np = {:.2e}'.format(icc_value, pvalue), fontsize=16, zorder=8, color='k')
 

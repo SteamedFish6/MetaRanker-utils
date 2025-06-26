@@ -22,7 +22,7 @@ yname_list2 = [f"Adj. {xname} of {RE_type}" for xname in xname_list]
 
 mark_list = ['o', '^', 's']
 color_list = ['#FF7F0E', '#2CA02C', '#D62728']
-plt.figure(figsize=(9, 8), dpi=300)
+plt.figure(figsize=(9, 6), dpi=300)
 
 text_ls = []
 text_ls2 = []
@@ -39,8 +39,8 @@ for i in range(len(xname_list)):
     y_pred = regression_line(x)
     r_squared = r2_score(y, y_pred)
     
-    plt.scatter(x, y, color=color_list[i], alpha=0.9, s=40, zorder=10, marker=mark_list[i])
-    plt.plot(x, y_pred, color=color_list[i], linewidth=2, alpha=0.9, zorder=5, label=yname_list[i])
+    plt.scatter(x, y, color=color_list[i], alpha=0.9, s=36, zorder=10, marker=mark_list[i])
+    plt.plot(x, y_pred, color=color_list[i], linewidth=1.8, alpha=0.9, zorder=5, label=yname_list[i])
     
     text1 = f'y = {slope:.2f}x {sign} {abs(intercept):.2f}\nR² = {r_squared:.4f}'
     
@@ -63,21 +63,18 @@ for i in range(len(xname_list)):
     text_ls.append(text1)
     text_ls2.append(text2)
 
-y_sep = 0.08
+y_sep = 0.1
 xmin, xmax, ymin, ymax = plt.axis()
 for i in range(len(xname_list)):
-    plt.text(xmin+(xmax-xmin)*0.6, ymin+(ymax-ymin)*(0.2-i*y_sep), text_ls[i], fontsize=18, color=color_list[i])
-    plt.text(xmin+(xmax-xmin)*0.03, ymin+(ymax-ymin)*(0.74-i*y_sep), text_ls2[i], fontsize=18, color=color_list[i])
+    plt.text(xmin+(xmax-xmin)*0.65, ymin+(ymax-ymin)*(0.24-i*y_sep), text_ls[i], fontsize=16, color=color_list[i])
+    plt.text(xmin+(xmax-xmin)*0.02, ymin+(ymax-ymin)*(0.68-i*y_sep), text_ls2[i], fontsize=16, color=color_list[i])
 
 plt.legend(fontsize=16, loc="upper left", )
-plt.xlabel(f'{RE_type} Value in Risk Vector', fontsize=24)
-plt.ylabel(f'{RE_type} Abundance', fontsize=24)
+plt.xlabel(f'{RE_type} Value in Risk Vector', fontsize=18)
+plt.ylabel(f'{RE_type} Abundance', fontsize=18)
 
-plt.tick_params(labelsize=18)
+plt.tick_params(labelsize=14)
 plt.grid(True, linestyle='--', alpha=0.6)
-ax = plt.gca()
-for spine in ax.spines.values():
-    spine.set_linewidth(1.2)
 
 plt.tight_layout()
 plt.savefig(outname,dpi=300)

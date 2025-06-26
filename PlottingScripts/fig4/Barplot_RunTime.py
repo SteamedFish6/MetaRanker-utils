@@ -20,15 +20,15 @@ x_labels1 = df['Sample'].to_list()
 x_labels2 = df['Environment'].to_list()
 labels = ["{}\n{}".format(lb1, lb2) for (lb1, lb2) in zip(x_labels1, x_labels2)]
 
-plt.figure(figsize=(9, 6), dpi=300)
-bar_width = 0.3
+plt.figure(figsize=(9, 6.5), dpi=300)
+bar_width = 0.4
 length = len(labels)
 plt.bar(x=np.arange(length), height=data1, label='MetaCompare 2.0', color='steelblue', alpha=0.9, width=bar_width, edgecolor='k')
 plt.bar(x=np.arange(length)+bar_width, height=data2, label='MetaRanker', color='indianred', alpha=0.9, width=bar_width, edgecolor='k')
 
 plt.xlabel('')
 plt.ylabel('Run Time (s)', fontsize=18)
-plt.xticks(ticks=np.arange(length)+bar_width/2, labels=labels, rotation=45, fontsize=12)
+plt.xticks(ticks=np.arange(length)+bar_width/2, labels=labels, rotation=90, fontsize=11)
 plt.yticks(fontsize=14)
 
 plt.legend(fontsize=14, loc="upper left")

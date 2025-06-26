@@ -28,7 +28,7 @@ x_labels2 = df['Environment'].to_list()
 x_labels = ["{}\n{}".format(lb1, lb2) for (lb1, lb2) in zip(x_labels1, x_labels2)]
 
 x = np.arange(len(x_labels))
-plt.figure(figsize=(9, 6), dpi=300)
+plt.figure(figsize=(9, 6.5), dpi=300)
 
 for i in range(len(categories)):
     plt.scatter(x, df[categories[i]].values, marker=marker_ls[i], color='grey', s=20, zorder=10)
@@ -36,7 +36,7 @@ for i in range(len(categories)):
 
 plt.xlabel('')
 plt.ylabel(y_name, fontsize=18)
-plt.xticks(ticks=range(len(x_labels)), labels=x_labels, rotation=45, fontsize=12)
+plt.xticks(ticks=range(len(x_labels)), labels=x_labels, rotation=90, fontsize=11)
 plt.yticks(fontsize=14)
 
 plt.legend(fontsize=12, loc="upper right")

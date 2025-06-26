@@ -83,10 +83,10 @@ legend = ax.legend(handles=[], frameon=False)
 
 for group in categories:
     x = df[x_name].unique().tolist().index(group)
-    y = 500
+    y = 480
     plt.text(x, y, "std = {:.2f}".format(stdev_dict[group]), ha='center', va='bottom', color="black", fontsize=14)
 
-plt.ylim(top=550)
+plt.ylim(top=520)
 
 plt.xlabel(' ')
 plt.ylabel(y_name, fontsize=18)

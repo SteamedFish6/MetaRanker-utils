@@ -43,7 +43,7 @@ y_pred = regression_line(x)
 r_squared = r2_score(y2, y_pred)
 
 plt.plot(x, y_pred, color='#D62728', linewidth=1.5, alpha=0.9, zorder=6, label='RI vs Adj. Human Health')
-plt.text(240, 10, f'y = {slope:.2f}x {sign} {abs(intercept):.2f}\nR² = {r_squared:.4f}', fontsize=14, color='#D62728')
+plt.text(240, 5, f'y = {slope:.2f}x {sign} {abs(intercept):.2f}\nR² = {r_squared:.4f}', fontsize=14, color='#D62728')
 
 plt.legend(fontsize=12, loc="upper left")
 plt.xlabel('Risk Index', fontsize=18)
@@ -62,10 +62,10 @@ y_bias = [0 for i in range(df.shape[0])]
 for i in range(len(labels)):
     plt.text(x[i]+x_bias[i], y2[i]+y_bias[i], labels[i], fontsize=8, zorder=8, color='grey')
 
-for j in (0, 2, 3, 4, 5):
-    plt.plot([x[j], x[j]+x_bias[j]-0.4], [y2[j], y2[j]+y_bias[j]+1.8], lw=0.4, color='k', alpha=1.0)
-for j in (6,):
-    plt.plot([x[j], x[j]+x_bias[j]+30], [y2[j], y2[j]+y_bias[j]-1.2], lw=0.4, color='k', alpha=1.0)
+# for j in (0, 2, 3, 4, 5):
+#     plt.plot([x[j], x[j]+x_bias[j]-0.4], [y2[j], y2[j]+y_bias[j]+1.8], lw=0.4, color='k', alpha=1.0)
+# for j in (6,):
+#     plt.plot([x[j], x[j]+x_bias[j]+30], [y2[j], y2[j]+y_bias[j]-1.2], lw=0.4, color='k', alpha=1.0)
 
 plt.grid(True, linestyle='--', alpha=0.6)
 plt.tight_layout()

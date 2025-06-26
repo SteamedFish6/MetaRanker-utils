@@ -21,10 +21,10 @@ import gzip
 import pandas as pd
 
 
-Sample_List_Fname = "Sample_List.txt"
-Reads_Path = "ReadsFile"
-Outpath = "directly_align"
-Total_Collect_File = "BPM_collection.tsv"
+Sample_List_Fname = "/home/gzy/SRAdata/ValidateBatch3_20250609/code/Sample_List.txt"
+Reads_Path = "/home/gzy/SRAdata/ValidateBatch3_20250609/ReadsFile"
+Outpath = "/home/gzy/SRAdata/ValidateBatch3_20250609/directly_align2"
+Total_Collect_File = "/home/gzy/SRAdata/ValidateBatch3_20250609/code/BPM_collection2.tsv"
 Reads_Folder_List = []
 with open(Sample_List_Fname) as sr:
     Samplename_List = [raw_Samplename.strip() for raw_Samplename in sr.readlines()]
@@ -34,11 +34,11 @@ for Samplename in Samplename_List:
 
 NUM_THREAD = 32
 
-card_name = "ranker_db/db_fasta/CARD.fasta"
-mge_name = "ranker_db/db_fasta/MGE.fasta"
-vfdb_name = "ranker_db/db_fasta/VFDB.fasta"
+card_name = "/home/gzy/code_gzy/code_20250218/ranker_db/db_fasta/CARD.fasta"
+mge_name = "/home/gzy/code_gzy/code_20250218/ranker_db/db_fasta/MGE.fasta"
+vfdb_name = "/home/gzy/code_gzy/code_20250218/ranker_db/db_fasta/VFDB.fasta"
 align_ls = [card_name, mge_name, vfdb_name]
-seqname_length_fname = "ranker_db/ranker_blastdb_seqname_length.tsv"
+seqname_length_fname = "/home/gzy/code_gzy/code_20250218/ranker_db/ranker_blastdb_seqname_length.tsv"
 
 def checkCallCMD(cmd: str, outname: str, is_cover_old=False) -> bool:
     '''If outname not exists, then call cmd
