@@ -17,19 +17,24 @@ import pandas as pd
 
 NUM_THREAD = 32
 f_criteria_nucl = 'identity>=85 & cover_len>=75'
+Cdhit_identity = 85
 Program_Dir_Path = os.path.dirname(os.path.abspath(__file__))
 
 raw_ARG_fasta = f"{Program_Dir_Path}/raw/CARD.fasta"
 raw_MGE_fasta = f"{Program_Dir_Path}/raw/MGE.fasta"
 raw_VF_fasta = f"{Program_Dir_Path}/raw/VFDB.fasta"
 
-cdhit_ARG_fasta = f"{Program_Dir_Path}/temp/fasta/cdhit.CARD.fasta"
-cdhit_MGE_fasta = f"{Program_Dir_Path}/temp/fasta/cdhit.MGE.fasta"
-cdhit_VF_fasta = f"{Program_Dir_Path}/temp/fasta/cdhit.VFDB.fasta"
+Tmp_path = f"{Program_Dir_Path}/temp"
+Tmp_fasta_path = f"{Tmp_path}/fasta"
+Tmp_M8_path = f"{Tmp_path}/output_M8"
 
-renamed_cdhit_ARG_fasta = f"{Program_Dir_Path}/temp/fasta/renamed_cdhit.CARD.fasta" #!rename
-renamed_cdhit_MGE_fasta = f"{Program_Dir_Path}/temp/fasta/renamed_cdhit.MGE.fasta"
-renamed_cdhit_VF_fasta = f"{Program_Dir_Path}/temp/fasta/renamed_cdhit.VFDB.fasta"
+cdhit_ARG_fasta = f"{Tmp_fasta_path}/cdhit.CARD.fasta"
+cdhit_MGE_fasta = f"{Tmp_fasta_path}/cdhit.MGE.fasta"
+cdhit_VF_fasta = f"{Tmp_fasta_path}/cdhit.VFDB.fasta"
+
+renamed_cdhit_ARG_fasta = f"{Tmp_fasta_path}/renamed_cdhit.CARD.fasta" #!rename
+renamed_cdhit_MGE_fasta = f"{Tmp_fasta_path}/renamed_cdhit.MGE.fasta"
+renamed_cdhit_VF_fasta = f"{Tmp_fasta_path}/renamed_cdhit.VFDB.fasta"
 
 blast_query_ARG = renamed_cdhit_ARG_fasta
 blast_query_MGE = renamed_cdhit_MGE_fasta
@@ -37,26 +42,28 @@ blast_query_MGE = renamed_cdhit_MGE_fasta
 blast_db_ARG = renamed_cdhit_ARG_fasta
 blast_db_VF = renamed_cdhit_VF_fasta
 
-blast_output_ARG_VF = f"{Program_Dir_Path}/temp/output_M8/out.blastn.cdhit_CARD.cdhit_VFDB.tsv"
-blast_output_MGE_ARG = f"{Program_Dir_Path}/temp/output_M8/out.blastn.cdhit_MGE.cdhit_CARD.tsv"
-blast_output_MGE_VF = f"{Program_Dir_Path}/temp/output_M8/out.blastn.cdhit_MGE.cdhit_VFDB.tsv"
+blast_output_ARG_VF = f"{Tmp_M8_path}/out.blastn.cdhit_CARD.cdhit_VFDB.tsv"
+blast_output_MGE_ARG = f"{Tmp_M8_path}/out.blastn.cdhit_MGE.cdhit_CARD.tsv"
+blast_output_MGE_VF = f"{Tmp_M8_path}/out.blastn.cdhit_MGE.cdhit_VFDB.tsv"
 
-filtered_blast_output_ARG_VF = f"{Program_Dir_Path}/temp/output_M8/sf_out.blastn.cdhit_CARD.cdhit_VFDB.tsv"
-filtered_blast_output_MGE_ARG = f"{Program_Dir_Path}/temp/output_M8/sf_out.blastn.cdhit_MGE.cdhit_CARD.tsv"
-filtered_blast_output_MGE_VF = f"{Program_Dir_Path}/temp/output_M8/sf_out.blastn.cdhit_MGE.cdhit_VFDB.tsv"
+filtered_blast_output_ARG_VF = f"{Tmp_M8_path}/sf_out.blastn.cdhit_CARD.cdhit_VFDB.tsv"
+filtered_blast_output_MGE_ARG = f"{Tmp_M8_path}/sf_out.blastn.cdhit_MGE.cdhit_CARD.tsv"
+filtered_blast_output_MGE_VF = f"{Tmp_M8_path}/sf_out.blastn.cdhit_MGE.cdhit_VFDB.tsv"
 
-marked_ARG_fasta = f"{Program_Dir_Path}/temp/fasta/marked_cdhit_CARD.fasta"
-marked_MGE_fasta = f"{Program_Dir_Path}/temp/fasta/marked_cdhit_MGE.fasta"
+marked_ARG_fasta = f"{Tmp_fasta_path}/marked_cdhit_CARD.fasta"
+marked_MGE_fasta = f"{Tmp_fasta_path}/marked_cdhit_MGE.fasta"
 
-corrected_ARG_fasta = f"{Program_Dir_Path}/temp/corrected/corrected_cdhit_CARD.fasta"
-corrected_MGE_fasta = f"{Program_Dir_Path}/temp/corrected/corrected_cdhit_MGE.fasta"
-# corrected_VF_fasta = f"{Program_Dir_Path}/temp/corrected/corrected_cdhit_VFDB.fasta"
+corrected_ARG_fasta = f"{Tmp_fasta_path}/corrected_cdhit_CARD.fasta"
+corrected_MGE_fasta = f"{Tmp_fasta_path}/corrected_cdhit_MGE.fasta"
+# corrected_VF_fasta = f"{Tmp_fasta_path}/corrected_cdhit_VFDB.fasta"
 corrected_VF_fasta = renamed_cdhit_VF_fasta
 
-final_ARG_fasta = f"{Program_Dir_Path}/final/CARD.fasta"
-final_MGE_fasta = f"{Program_Dir_Path}/final/MGE.fasta"
-final_VF_fasta = f"{Program_Dir_Path}/final/VFDB.fasta"
-seqname_lendict_fname = f"{Program_Dir_Path}/final/ranker_blastdb_seqname_length.tsv"
+final_db_path = f"{Program_Dir_Path}/final"
+final_db_fasta_path = f"{final_db_path}/db_fasta"
+final_ARG_fasta = f"{final_db_fasta_path}/CARD.fasta"
+final_MGE_fasta = f"{final_db_fasta_path}/MGE.fasta"
+final_VF_fasta = f"{final_db_fasta_path}/VFDB.fasta"
+seqname_lendict_fname = f"{final_db_path}/ranker_blastdb_seqname_length.tsv"
 
 
 def RemoveSpace(fname, outname):
@@ -229,11 +236,20 @@ def createLenDictwithFasta(flist: list, outlist: list, mark_list: list, sheet_ou
     # writeTSV(lensheet, sheet_outname, titlelist=titlelist)
     sheet.to_csv(sheet_outname, sep='\t', index=False)
 
+def mk_dir(make_path):
+    if os.path.isdir(make_path) == False:
+        os.mkdir(make_path)
 
 if __name__ == "__main__":
-    subprocess.call("cd-hit -i {} -o {} -c 0.85 -aS 0.85 -n 5 -d 0 -g 1 -M 0 -T {}".format(raw_ARG_fasta, cdhit_ARG_fasta, NUM_THREAD), shell=True)
-    subprocess.call("cd-hit -i {} -o {} -c 0.85 -aS 0.85 -n 5 -d 0 -g 1 -M 0 -T {}".format(raw_MGE_fasta, cdhit_MGE_fasta, NUM_THREAD), shell=True)
-    subprocess.call("cd-hit -i {} -o {} -c 0.85 -aS 0.85 -n 5 -d 0 -g 1 -M 0 -T {}".format(raw_VF_fasta, cdhit_VF_fasta, NUM_THREAD), shell=True)
+    mk_dir(Tmp_path)
+    mk_dir(Tmp_fasta_path)
+    mk_dir(Tmp_M8_path)
+    mk_dir(final_db_path)
+    mk_dir(final_db_fasta_path)
+    
+    subprocess.call("cd-hit -i {} -o {} -c {} -aS {} -n 5 -d 0 -g 1 -M 0 -T {}".format(raw_ARG_fasta, cdhit_ARG_fasta, Cdhit_identity, Cdhit_identity, NUM_THREAD), shell=True)
+    subprocess.call("cd-hit -i {} -o {} -c {} -aS {} -n 5 -d 0 -g 1 -M 0 -T {}".format(raw_MGE_fasta, cdhit_MGE_fasta, Cdhit_identity, Cdhit_identity, NUM_THREAD), shell=True)
+    subprocess.call("cd-hit -i {} -o {} -c {} -aS {} -n 5 -d 0 -g 1 -M 0 -T {}".format(raw_VF_fasta, cdhit_VF_fasta, Cdhit_identity, Cdhit_identity, NUM_THREAD), shell=True)
     
     RemoveSpace(cdhit_ARG_fasta, renamed_cdhit_ARG_fasta)
     RemoveSpace(cdhit_MGE_fasta, renamed_cdhit_MGE_fasta)
